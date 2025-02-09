@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الصيدلية</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- صفحة تسجيل الدخول -->
+    <div id="loginPage">
+        <h1>تسجيل الدخول</h1>
+        <input type="text" id="username" placeholder="اسم المستخدم">
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button onclick="checkLogin()">تسجيل الدخول</button>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div id="dashboardPage" style="display: none;">
+        <h1>برهان السنمي للأدوية</h1>
+        <button onclick="logout()">تسجيل الخروج</button>
+
+        <!-- قسم إدارة الأصناف (للمدير فقط) -->
+        <div id="adminSection">
+            <h2>إدارة الأصناف</h2>
+            <input type="text" id="productName" placeholder="اسم الصنف">
+            <input type="text" id="productType" placeholder="نوع الصنف">
+            <input type="text" id="productCode" placeholder="رقم الصنف">
+            <input type="date" id="productProductionDate" placeholder="تاريخ الإنتاج">
+            <input type="date" id="productExpiryDate" placeholder="تاريخ الانتهاء">
+            <input type="number" id="productPrice" placeholder="السعر (ريال)">
+            <button onclick="addProduct()">إضافة صنف</button>
+            <table id="productsTable"></table>
+        </div>
+
+        <!-- قسم إدارة الفواتير -->
+        <div id="invoiceSection">
+            <h2>إدارة الفواتير</h2>
+            <label for="invoiceProduct">اختر الصنف:</label>
+            <select id="invoiceProduct">
+                <option value="">اختر الصنف</option>
+                <!-- الأصناف ستضاف هنا بشكل ديناميكي -->
+            </select>
+            <label for="invoiceQuantity">العدد:</label>
+            <input type="number" id="invoiceQuantity" placeholder="العدد">
+            <button onclick="addInvoice()">إضافة فاتورة</button>
+            <h3>عرض الفواتير</h3>
+            <table id="invoicesTable">
+                <!-- سيتم عرض الفواتير هنا -->
+            </table>
+            <button onclick="printInvoices()">طباعة الفواتير المحددة</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
